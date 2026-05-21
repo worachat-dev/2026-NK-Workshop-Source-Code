@@ -113,6 +113,7 @@ To access and play the games, follow these simple steps:
 
 ## 📧 Contact
 
-For any questions or feedback, please contact Worachat Wannawong.
+For any questions or feedback, please contact Worachat Wannawong., Ph.D.
+🎮 Live (Demo) : https://worachat-dev.github.io/2026-NK-Workshop-Source-Code/
 
 ---
