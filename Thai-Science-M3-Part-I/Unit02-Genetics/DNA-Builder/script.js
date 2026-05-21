@@ -1,0 +1,178 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // --- DNA Builder ---
+    const baseDraggables = document.querySelectorAll('#base-draggables .draggable');
+    const dnaStrand = document.getElementById('dna-strand');
+    const checkDnaButton = document.getElementById('check-dna');
+    const dnaFeedback = document.getElementById('dna-feedback');
+    const clearDnaButton = document.getElementById('clear-dna');
+
+    let dnaSequence = [];
+
+    baseDraggables.forEach(base => {
+        base.addEventListener('dragstart', (event) => {
+            event.dataTransfer.setData('text/plain', event.target.dataset.base);
+        });
+    });
+
+    dnaStrand.addEventListener('dragover', (event) => {
+        event.preventDefault();
+    });
+
+    dnaStrand.addEventListener('drop', (event) => {
+        event.preventDefault();
+        const base = event.dataTransfer.getData('text/plain');
+        const newBaseElement = document.createElement('div');
+        newBaseElement.classList.add('draggable', 'base', base.toLowerCase());
+        newBaseElement.dataset.base = base;
+        newBaseElement.textContent = `${event.target.textContent.trim()} ${base}`;
+        dnaStrand.appendChild(newBaseElement);
+        dnaSequence.push(base);
+    });
+
+    checkDnaButton.addEventListener('click', () => {
+        if (dnaSequence.length === 0) {
+            dnaFeedback.textContent = 'The DNA strand is empty.';
+            dnaFeedback.style.color = 'red';
+            return;
+        }
+        dnaFeedback.textContent = `DNA Sequence: ${dnaSequence.join('-')}`;
+        dnaFeedback.style.color = 'green'; // For a simple display
+        // In a more advanced version, you could compare against a target sequence
+    });
+
+    clearDnaButton.addEventListener('click', () => {
+        dnaStrand.innerHTML = '';
+        dnaSequence = [];
+        dnaFeedback.textContent = '';
+    });
+
+    // --- Gene-Trait Matcher ---
+    const geneBank = document.getElementById('gene-bank');
+    const traitTargets = document.getElementById('trait-targets');
+    const checkMatchesButton = document.getElementById('check-matches');
+    const matchFeedback = document.getElementById('match-feedback');
+    const resetMatchesButton = document.getElementById('reset-matches');
+
+    const genesToTraits = {
+        'Height Gene': 'Plant height',
+        'Seed Color Gene': 'Seed color',
+        'Flower Color Gene': 'Flower color',
+        // Add more gene-trait pairs
+    };
+
+    const traitsAvailable = Object.values(genesToTraits);
+
+    // Populate genes in the drag column
+    for (const gene in genesToTraits) {
+        const geneElement = document.createElement('div');
+        geneElement.classList.add('gene-draggable', 'draggable');
+        geneElement.textContent = gene;
+        geneElement.dataset.gene = gene;
+        geneElement.draggable = true;
+        geneElement.addEventListener('dragstart', (event) => {
+            event.dataTransfer.setData('text/plain', event.target.dataset.gene);
+        });
+        geneBank.appendChild(geneElement);
+    }
+
+    // Populate trait targets in the drop column
+    traitsAvailable.forEach(trait => {
+        const traitTarget = document.createElement('div');
+        traitTarget.classList.add('trait-target');
+        traitTarget.textContent = trait;
+        traitTarget.dataset.trait = trait;
+        traitTarget.addEventListener('dragover', (event) => {
+            event.preventDefault();
+        });
+        traitTarget.addEventListener('drop', (event) => {
+            event.preventDefault();
+            const gene = event.dataTransfer.getData('text/plain');
+            const draggedGeneElement = document.querySelector(`div.gene-draggable.draggable`); // Assuming only one is dragged at a time
+            if (draggedGeneElement && event.target.dataset.trait === genesToTraits[`${gene}`]) {
+                event.target.textContent = `${event.target.dataset.trait}: ${gene}`;
+                event.target.classList.add('occupied');
+                draggedGeneElement.style.display = 'none'; // Hide the dragged gene
+            } else if (draggedGeneElement) {
+                matchFeedback.textContent = 'Incorrect match. Try again.';
+                matchFeedback.style.color = 'red';
+                setTimeout(() => matchFeedback.textContent = '', 2000);
+            }
+        });
+        traitTargets.appendChild(traitTarget);
+    });
+
+    checkMatchesButton.addEventListener('click', () => {
+        let correctMatches = 0;
+        const occupiedTargets = traitTargets.querySelectorAll('.trait-target.occupied');
+        occupiedTargets.forEach(target => {
+            const [trait, gene] = target.textContent.split(':').map(item => item.trim());
+            if (genesToTraits[`${gene}`] === trait) {
+                correctMatches++;
+            }
+        });
+
+        if (correctMatches === Object.keys(genesToTraits).length && occupiedTargets.length === Object.keys(genesToTraits).length) {
+            matchFeedback.textContent = 'Congratulations! All genes are matched correctly.';
+            matchFeedback.style.color = 'green';
+        } else {
+            matchFeedback.textContent = `You have ${correctMatches} correct matches out of ${Object.keys(genesToTraits).length}.`;
+            matchFeedback.style.color = 'orange';
+        }
+    });
+
+    resetMatchesButton.addEventListener('click', () => {
+        traitTargets.querySelectorAll('.trait-target.occupied').forEach(target => {
+            const originalTrait = target.dataset.trait;
+            target.textContent = originalTrait;
+            target.classList.remove('occupied');
+        });
+        geneBank.querySelectorAll('.gene-draggable').forEach(gene => {
+            gene.style.display = 'block';
+        });
+        matchFeedback.textContent = '';
+    });
+});
+````
+
+### How to use these files:
+
+1.  **Save them:**
+    * Save the first block as `index.html`.
+    * Save the second block as `style.css` in the same directory.
+    * Save the third block as `script.js` in the same directory.
+2.  **Open `index.html`:** Open the `index.html` file in your web browser.
+
+### Features Explained:
+
+* **DNA Builder:**
+    * **Drag and Drop Bases:** Students can drag Adenine (A), Thymine (T), Guanine (G), and Cytosine (C) bases from the draggable items area to the DNA strand drop target.
+    * **Visual Strand:** As bases are dropped, they visually form a sequence within the DNA strand area.
+    * **Check DNA Strand:** A button to display the current sequence of the built DNA strand. (In a more advanced version, this could check against a specific target sequence or for complementary base pairing if you implement a double helix).
+    * **Clear Strand:** Clears the DNA strand, allowing students to start over.
+* **Gene-Trait Matcher:**
+    * **Draggable Genes:** Gene names (e.g., "Height Gene", "Seed Color Gene") are displayed as draggable elements.
+    * **Trait Drop Targets:** Corresponding traits (e.g., "Plant height", "Seed color") are presented as drop targets.
+    * **Matching:** Students drag a gene to what they believe is the correct corresponding trait. If correct, the gene name will be displayed next to the trait, and the gene will disappear from the "Gene Bank".
+    * **Check Matches:** Provides feedback on how many gene-trait pairs were matched correctly.
+    * **Reset Matches:** Resets the activity, returning all genes to the "Gene Bank" and clearing the trait targets.
+
+### Potential Enhancements:
+
+* **DNA Builder:**
+    * **Complementary Base Pairing:** Implement logic to show the complementary strand (A with T, C with G).
+    * **Double Helix Visualization:** Use CSS or a library like Three.js to create a visual representation of the double helix as bases are added.
+    * **Error Checking:** Provide feedback if students try to pair non-complementary bases in a complementary strand activity.
+    * **Specific Sequence Challenges:** Ask students to build a specific DNA sequence.
+* **Gene-Trait Matcher:**
+    * **More Complex Relationships:** Include scenarios where multiple genes might contribute to a single trait or where a single gene might influence multiple traits (pleiotropy).
+    * **Visual Connections:** Draw lines or arrows to visually connect the dragged gene to the dropped trait.
+    * **Hints:** Provide hints if students are struggling to match genes and traits.
+    * **Scoring:** Implement a scoring system based on the accuracy and speed of matching.
+
+This outline provides a solid foundation for creating both interactive learning activities within a single webpage. Remember that making the drag-and-drop interactions smooth and visually appealing will enhance the user experience.
+
+// แหล่งที่มา:
+// 1. https://newspost.muragon.com/entry/2.html
+// 2. https://github.com/Abdullah-3030/Educational-exchange-platform
+// 3. https://github.com/Msalarzon/webdev-learning-hub
+// 4. https://github.com/6431503106/ProjectSeminar

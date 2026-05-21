@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balancing Chemical Equations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Balancing Chemical Equations Challenge</h1>
+        <p>Enter the correct stoichiometric coefficients to balance the chemical equations. Remember the Law of Conservation of Mass!</p>
+
+        <div class="equation-area">
+            <div id="equation-display" class="equation-text">
+                </div>
+            <div id="input-fields" class="coefficient-inputs">
+                </div>
+        </div>
+
+        <div class="atom-count-display">
+            <h3>Atom Count Check:</h3>
+            <div id="reactant-atom-counts" class="atom-counts">
+                <h4>Reactants:</h4>
+                <p>No atoms counted yet.</p>
+            </div>
+            <div id="product-atom-counts" class="atom-counts">
+                <h4>Products:</h4>
+                <p>No atoms counted yet.</p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="check-button">Check Equation</button>
+            <button id="next-button" disabled>Next Equation</button>
+            <button id="reset-button">Reset</button>
+        </div>
+
+        <div id="feedback" class="feedback-message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- แหล่งที่มา: -->
+<!-- 1. https://github.com/AbrahamEstrada27/examen372 -->
+<!-- 2. https://github.com/AlgoHussle/nomad-blog -->
+<!-- 3. https://github.com/Hakesh/p2-gaming-quiz -->

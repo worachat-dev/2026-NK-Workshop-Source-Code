@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tide Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Tide Predictor</h1>
+        <p>Observe the positions of the Sun, Earth, and Moon. Predict the tide level at the red location markers on Earth.</p>
+
+        <div class="tide-simulator">
+            <div class="sun"></div>
+            <div class="earth-moon-system">
+                <div class="earth-orbit-path">
+                    <div class="earth">
+                        <div class="tide-marker north-marker" data-location="north"></div>
+                        <div class="tide-marker south-marker" data-location="south"></div>
+                        <div class="tide-marker east-marker" data-location="east"></div>
+                        <div class="tide-marker west-marker" data-location="west"></div>
+                    </div>
+                </div>
+                <div class="moon-orbit-path">
+                    <div class="moon"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-panel">
+            <button id="next-alignment-button">Next Moon Position</button>
+            <div class="prediction-area">
+                <p>Predict for the <span id="selected-location-name"></span> location:</p>
+                <div class="tide-prediction-options">
+                    <button class="tide-button" data-tide-type="high">High Tide</button>
+                    <button class="tide-button" data-tide-type="low">Low Tide</button>
+                    <button class="tide-button" data-tide-type="spring">Spring Tide (Very High/Low)</button>
+                    <button class="tide-button" data-tide-type="neap">Neap Tide (Moderate High/Low)</button>
+                </div>
+                <button id="check-prediction-button">Check Prediction</button>
+                <div id="prediction-feedback" class="feedback-message"></div>
+                <div id="tide-explanation" class="explanation-box"></div>
+            </div>
+        </div>
+        <button id="restart-button" class="restart-button">Restart Game</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- แหล่งที่มา: -->
+<!-- 1. https://github.com/aadilmughal786/simple-web-project -->
+<!-- 2. https://github.com/Siphiwe1997/MyProjects -->

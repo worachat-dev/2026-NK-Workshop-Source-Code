@@ -1,0 +1,206 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+}
+
+h2 {
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.parent-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.parent {
+    flex: 1;
+    border: 1px solid #c9c9c9;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.parent select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.allele-display {
+    min-height: 40px;
+    border: 1px dashed #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #555;
+    background-color: #eef;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#punnett-grid {
+    display: grid;
+    border: 1px solid #333;
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+.punnett-cell {
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    min-width: 80px; /* Adjust size as needed */
+    min-height: 80px; /* Adjust size as needed */
+    background-color: #f0f0f0;
+}
+
+.punnett-header {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+.droppable {
+    border: 2px dashed #007bff;
+    background-color: #e0f2ff;
+}
+
+.draggable {
+    cursor: grab;
+    padding: 5px 10px;
+    margin: 2px;
+    background-color: #ffeb3b;
+    border: 1px solid #cddc39;
+    border-radius: 3px;
+}
+
+#punnett-explanation {
+    margin-top: 15px;
+    font-style: italic;
+    color: #666;
+}
+
+.results-display h3 {
+    margin-top: 20px;
+    color: #4CAF50;
+}
+
+.results-display ul {
+    list-style: none;
+    padding: 0;
+}
+
+.results-display li {
+    background-color: #e6ffe6;
+    padding: 8px;
+    margin-bottom: 5px;
+    border-left: 5px solid #4CAF50;
+    border-radius: 3px;
+}
+
+.quiz-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fffacd;
+    border: 1px solid #ffcc80;
+    border-radius: 8px;
+}
+
+.quiz-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.quiz-section input[type="text"] {
+    width: calc(100% - 22px); /* Account for padding and border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#feedback {
+    margin-top: 15px;
+    font-weight: bold;
+    color: red; /* Default for incorrect, will change with JS */
+}
+
+#reset-button {
+    background-color: #f44336;
+    margin-top: 20px;
+}
+
+#reset-button:hover {
+    background-color: #da190b;
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+}
+
+/* แหล่งที่มา: */
+/* 1. https://www.classace.io/answers/can-you-code-me-the-game-2048-in-html-css-and-java-script_5866ed38c65a6ad517ba23957d9f3264 */
+/* 2. https://newspost.muragon.com/entry/2.html */
+/* 3. https://github.com/6431503106/ProjectSeminar */
+/* 4. https://github.com/analudms/AgeChecker */

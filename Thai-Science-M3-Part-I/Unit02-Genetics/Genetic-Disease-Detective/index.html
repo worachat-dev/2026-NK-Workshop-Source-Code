@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genetic Disease Detective</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Genetic Disease Detective</h1>
+        <p>Analyze case studies, identify genetic diseases, and suggest implications.</p>
+    </header>
+
+    <main>
+        <section id="case-study-section">
+            <h2>Patient Case File <span id="case-number">#1</span></h2>
+            <div id="case-study-content">
+                <p id="patient-name">Patient Name: </p>
+                <p id="patient-age">Age: </p>
+                <p id="patient-symptoms">Symptoms: </p>
+                <p id="patient-family-history">Family History: </p>
+                <p id="patient-test-results">Lab/Test Results: </p>
+            </div>
+            <button id="next-case-button" style="display: none;">Next Case</button>
+        </section>
+
+        <section id="disease-selection-section">
+            <h2>Identify the Disease</h2>
+            <p>Select the genetic disease that best matches the patient's symptoms.</p>
+            <div class="disease-list-container">
+                <ul id="disease-list">
+                    </ul>
+            </div>
+            <button id="submit-diagnosis">Submit Diagnosis</button>
+            <p id="diagnosis-feedback"></p>
+        </section>
+
+        <section id="implications-section" style="display: none;">
+            <h2>Implications and Management</h2>
+            <p>Based on your diagnosis, suggest potential implications or prevention methods.</p>
+            <div class="implications-prompts">
+                <label for="implication-input-1">Potential health implications for the patient:</label>
+                <textarea id="implication-input-1" rows="3" placeholder="e.g., increased risk of infections, developmental delays..."></textarea>
+
+                <label for="implication-input-2">Potential prevention or management strategies:</label>
+                <textarea id="implication-input-2" rows="3" placeholder="e.g., genetic counseling, specific therapies, lifestyle adjustments..."></textarea>
+            </div>
+            <button id="check-implications">Check Implications</button>
+            <p id="implications-feedback"></p>
+        </section>
+
+        <section id="disease-info-reveal" style="display: none;">
+            <h2>Correct Disease Information</h2>
+            <div id="reveal-disease-name"></div>
+            <div id="reveal-disease-description"></div>
+            <h3>Key Implications:</h3>
+            <ul id="reveal-disease-implications"></ul>
+            <h3>Management/Prevention:</h3>
+            <ul id="reveal-disease-prevention"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Genetic Learning Tools</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- แหล่งที่มา: -->
+<!-- 1. https://github.com/arcturusX1/PetBuddy_CSE470_Project_Group5 -->
+<!-- 2. https://quizlet.com/616219863/exam-1-pe-488-flash-cards/ -->

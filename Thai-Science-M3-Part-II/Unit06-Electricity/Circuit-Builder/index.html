@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuit Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Circuit Builder</h1>
+        <p>Drag and drop components to build simple series and parallel circuits. Click the switch to see if the bulb lights up!</p>
+
+        <div class="main-circuit-area">
+            <div class="component-palette">
+                <h3>Components</h3>
+                <div id="palette-items">
+                    <div class="component battery" draggable="true" data-type="battery" data-polarity="positive"></div>
+                    <div class="component wire" draggable="true" data-type="wire"></div>
+                    <div class="component lightbulb" draggable="true" data-type="lightbulb"></div>
+                    <div class="component switch open" draggable="true" data-type="switch" data-state="open"></div>
+                </div>
+                <p class="hint">Drag a battery to start!</p>
+            </div>
+
+            <div class="circuit-board" id="circuit-board">
+                <p class="placeholder">Drag components here to build your circuit.</p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="simulate-button">Simulate Circuit</button>
+            <button id="reset-button">Reset Board</button>
+        </div>
+
+        <div id="feedback" class="feedback-message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- แหล่งที่มา: -->
+<!-- 1. https://github.com/TristonBabers/Portfolio-Website -->

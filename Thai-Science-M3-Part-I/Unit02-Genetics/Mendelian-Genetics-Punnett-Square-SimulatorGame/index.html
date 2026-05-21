@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mendelian Genetics Punnett Square Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mendelian Genetics Punnett Square Simulator</h1>
+        <p>Cross different parent organisms and predict the genotype and phenotype ratios of the offspring.</p>
+    </header>
+
+    <main>
+        <section id="parent-selection">
+            <h2>Select Parent Organisms</h2>
+            <div class="parent-container">
+                <div class="parent" id="parent1">
+                    <h3>Parent 1</h3>
+                    <select id="trait1-parent1">
+                        <option value="">Select Trait 1</option>
+                        </select>
+                    <select id="trait2-parent1">
+                        <option value="">Select Trait 2 (if applicable for dihybrid)</option>
+                    </select>
+                    <div class="allele-display" id="allele-display-parent1">
+                        </div>
+                </div>
+                <div class="parent" id="parent2">
+                    <h3>Parent 2</h3>
+                    <select id="trait1-parent2">
+                        <option value="">Select Trait 1</option>
+                    </select>
+                    <select id="trait2-parent2">
+                        <option value="">Select Trait 2 (if applicable for dihybrid)</option>
+                    </select>
+                    <div class="allele-display" id="allele-display-parent2">
+                        </div>
+                </div>
+            </div>
+            <button id="cross-button">Perform Cross</button>
+        </section>
+
+        <section id="punnett-square-section" style="display: none;">
+            <h2>Punnett Square</h2>
+            <div id="punnett-grid">
+                </div>
+            <div id="punnett-explanation">
+                <p>Drag and drop alleles into the Punnett square, or click cells to populate.</p>
+            </div>
+        </section>
+
+        <section id="results-section" style="display: none;">
+            <h2>Offspring Ratios</h2>
+            <div class="results-display">
+                <h3>Genotype Ratios:</h3>
+                <ul id="genotype-ratios">
+                    </ul>
+                <h3>Phenotype Ratios:</h3>
+                <ul id="phenotype-ratios">
+                    </ul>
+                <div class="quiz-section">
+                    <h3>Quiz: Predict the Ratios!</h3>
+                    <p>Enter your predicted ratios (e.g., 1:2:1 for genotype, 3:1 for phenotype):</p>
+                    <label for="genotype-input">Your Genotype Prediction:</label>
+                    <input type="text" id="genotype-input" placeholder="e.g., 1:2:1">
+                    <label for="phenotype-input">Your Phenotype Prediction:</label>
+                    <input type="text" id="phenotype-input" placeholder="e.g., 3:1">
+                    <button id="check-answers">Check Answers</button>
+                    <p id="feedback"></p>
+                </div>
+            </div>
+            <button id="reset-button">Start New Cross</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mendelian Genetics Simulator</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- แหล่งที่มา: -->
+<!-- 1. https://www.classace.io/answers/can-you-code-me-the-game-2048-in-html-css-and-java-script_5866ed38c65a6ad517ba23957d9f3264 -->
+<!-- 2. https://newspost.muragon.com/entry/2.html -->
+<!-- 3. https://github.com/6431503106/ProjectSeminar -->
+<!-- 4. https://github.com/analudms/AgeChecker -->

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electromagnetic Spectrum Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Electromagnetic Spectrum Explorer</h1>
+        <p>Drag and drop the applications or dangers to their corresponding part of the EM spectrum.</p>
+
+        <div class="spectrum-container">
+            <div class="spectrum-band" id="band-radio" data-spectrum-type="radio">
+                <span class="band-label">Radio Waves</span>
+                <div class="dropped-items"></div>
+            </div>
+            <div class="spectrum-band" id="band-microwave" data-spectrum-type="microwave">
+                <span class="band-label">Microwaves</span>
+                <div class="dropped-items"></div>
+            </div>
+            <div class="spectrum-band" id="band-infrared" data-spectrum-type="infrared">
+                <span class="band-label">Infrared</span>
+                <div class="dropped-items"></div>
+            </div>
+            <div class="spectrum-band" id="band-visible" data-spectrum-type="visible">
+                <span class="band-label">Visible Light</span>
+                <div class="dropped-items"></div>
+            </div>
+            <div class="spectrum-band" id="band-ultraviolet" data-spectrum-type="ultraviolet">
+                <span class="band-label">Ultraviolet</span>
+                <div class="dropped-items"></div>
+            </div>
+            <div class="spectrum-band" id="band-xray" data-spectrum-type="xray">
+                <span class="band-label">X-rays</span>
+                <div class="dropped-items"></div>
+            </div>
+            <div class="spectrum-band" id="band-gamma" data-spectrum-type="gamma">
+                <span class="band-label">Gamma Rays</span>
+                <div class="dropped-items"></div>
+            </div>
+        </div>
+
+        <div class="items-to-drag-container">
+            <div class="draggable-item" draggable="true" data-type="radio">Radio Communication</div>
+            <div class="draggable-item" draggable="true" data-type="microwave">Microwave Oven</div>
+            <div class="draggable-item" draggable="true" data-type="infrared">TV Remote Control</div>
+            <div class="draggable-item" draggable="true" data-type="visible">Seeing Colors</div>
+            <div class="draggable-item" draggable="true" data-type="ultraviolet">Sunburn</div>
+            <div class="draggable-item" draggable="true" data-type="xray">Medical X-rays</div>
+            <div class="draggable-item" draggable="true" data-type="gamma">Cancer Treatment</div>
+            <div class="draggable-item" draggable="true" data-type="radio">Broadcast Radio</div>
+            <div class="draggable-item" draggable="true" data-type="microwave">Radar</div>
+            <div class="draggable-item" draggable="true" data-type="infrared">Night Vision</div>
+            <div class="draggable-item" draggable="true" data-type="visible">Photosynthesis</div>
+            <div class="draggable-item" draggable="true" data-type="ultraviolet">Sterilization</div>
+            <div class="draggable-item" draggable="true" data-type="xray">Airport Security Scanners</div>
+            <div class="draggable-item" draggable="true" data-type="gamma">Food Irradiation</div>
+        </div>
+
+        <button id="check-button">Check Answers</button>
+        <div id="feedback" class="feedback-message"></div>
+        <button id="reset-button">Reset</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- แหล่งที่มา: -->
+<!-- 1. https://github.com/Alan-Fernandez/kong_webhook -->

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wave Anatomy Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Wave Anatomy Builder</h1>
+        <p>Drag and drop the labels to the correct parts of the wave.</p>
+
+        <div class="wave-diagram">
+            <img src="wave_diagram.png" alt="Diagram of a wave with blank labels">
+            <div class="drop-target" id="target-crest" data-part="crest"></div>
+            <div class="drop-target" id="target-trough" data-part="trough"></div>
+            <div class="drop-target" id="target-wavelength" data-part="wavelength"></div>
+            <div class="drop-target" id="target-amplitude" data-part="amplitude"></div>
+        </div>
+
+        <div class="labels-container">
+            <div class="draggable-label" id="label-amplitude" draggable="true" data-part="amplitude">Amplitude</div>
+            <div class="draggable-label" id="label-wavelength" draggable="true" data-part="wavelength">Wavelength</div>
+            <div class="draggable-label" id="label-crest" draggable="true" data-part="crest">Crest</div>
+            <div class="draggable-label" id="label-trough" draggable="true" data-part="trough">Trough</div>
+        </div>
+
+        <button id="check-button">Check Answers</button>
+        <div id="feedback" class="feedback-message"></div>
+        <button id="reset-button">Reset</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- แหล่งที่มา: -->
+<!-- 1. https://www.zhaoping.com/i/542.html -->
+<!-- 2. https://github.com/n3ur0m4ncr/n3ur0m4ncrr.github.io -->

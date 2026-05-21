@@ -1,0 +1,221 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #ece9e6, #ffffff); /* Soft gradient background */
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.game-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+h1 {
+    color: #2c3e50; /* Dark blue-gray */
+    margin-bottom: 15px;
+    font-size: 2.8em;
+    font-weight: 700;
+}
+
+p {
+    color: #555;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+#ray-tracer-quiz {
+    margin-bottom: 30px;
+}
+
+.question-slide {
+    display: none; /* Hidden by default */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.question-slide.active {
+    display: block; /* Active slide is visible */
+}
+
+.question-text {
+    font-size: 1.3em;
+    color: #34495e; /* Darker blue-gray */
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.diagram-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 60%; /* Aspect ratio (e.g., 50% for 2:1, 75% for 4:3) */
+    background-color: #e6f7ff; /* Light blue background for diagram */
+    border: 1px solid #aaddff;
+    border-radius: 8px;
+    margin: 0 auto 30px;
+    overflow: hidden; /* Ensure rays stay within bounds */
+}
+
+.diagram-container img.surface {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Adjust as needed */
+    z-index: 1;
+}
+
+.ray-options {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* On top of the background diagram */
+    display: flex;
+    justify-content: center; /* Center horizontally if using simple flex */
+    align-items: center; /* Center vertically if using simple flex */
+}
+
+/* Base style for a ray option */
+.ray-option {
+    position: absolute; /* Allows precise positioning */
+    cursor: pointer;
+    border: 3px solid transparent; /* For selection highlight */
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    opacity: 0.9;
+}
+
+.ray-option img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.ray-option:hover {
+    border-color: #3498db; /* Blue on hover */
+    transform: scale(1.02);
+}
+
+.ray-option.selected {
+    border-color: #2ecc71; /* Green when selected */
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+}
+
+/* Feedback styles after submission */
+.ray-option.correct-path {
+    border-color: #28a745; /* Correct green */
+    box-shadow: 0 0 20px rgba(40, 167, 69, 0.8);
+    opacity: 1;
+}
+
+.ray-option.incorrect-path {
+    border-color: #dc3545; /* Incorrect red */
+    opacity: 0.5; /* Dim incorrect paths */
+}
+
+.ray-option.correct-path img {
+    filter: drop-shadow(0 0 5px #28a745); /* Add a glow */
+}
+.ray-option.incorrect-path img {
+    filter: grayscale(80%); /* Dim incorrect paths */
+}
+
+
+.navigation-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-button {
+    background-color: #3498db; /* Blue */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+.nav-button:hover {
+    background-color: #2980b9; /* Darker Blue */
+    transform: translateY(-2px);
+}
+
+.nav-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+#submit-button {
+    background-color: #2ecc71; /* Green */
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+}
+
+#submit-button:hover {
+    background-color: #27ae60; /* Darker Green */
+}
+
+.results-container {
+    margin-top: 30px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #2c3e50;
+    min-height: 40px; /* Prevent layout shift */
+}
+
+.results-container.pass {
+    color: #28a745;
+}
+
+.results-container.fail {
+    color: #dc3545;
+}
+
+.restart-button {
+    background-color: #f39c12; /* Orange */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(243, 156, 18, 0.3);
+    display: none; /* Hidden until quiz is submitted */
+}
+
+.restart-button:hover {
+    background-color: #e67e22; /* Darker Orange */
+    transform: translateY(-2px);
+}
+
+/* แหล่งที่มา: */
+/* 1. https://github.com/Ahmed5510-Mac/Card-Hover */
+/* 2. https://github.com/jaranda-polo/randomcard */
+/* 3. https://github.com/JosephJtech/quiz-application */
+/* 4. https://github.com/vipullsingh/quiz-platform-frontend */
+/* 5. https://github.com/OElksnitis/WebLietojumi */
+/* 6. https://intfiction.org/t/help-button-for-randomly-assigning-gifts-not-working/65760 */
+/* 7. https://github.com/AdiletZumabai/work */
+/* 8. https://github.com/Shafi-shafs/expo-project */

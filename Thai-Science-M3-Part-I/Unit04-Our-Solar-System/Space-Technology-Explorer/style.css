@@ -1,0 +1,209 @@
+body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2c3e50, #34495e, #1a202c); /* Dark space-like gradient */
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #ecf0f1; /* Light gray text */
+}
+
+.game-container {
+    background-color: #3b5063; /* Slightly lighter dark blue-gray */
+    border-radius: 25px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    text-align: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+h1 {
+    color: #81ecec; /* Light Aqua */
+    margin-bottom: 20px;
+    font-size: 3.2em;
+    font-weight: 900;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+p {
+    color: #bdc3c7; /* Lighter gray */
+    margin-bottom: 40px;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.match-area {
+    display: flex;
+    justify-content: space-around;
+    gap: 35px;
+    margin-bottom: 40px;
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+}
+
+.technology-column {
+    flex: 2.5; /* Takes more space for technology cards */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    padding: 25px;
+    background-color: #4a6075;
+    border-radius: 18px;
+    border: 1px solid #5a7082;
+}
+
+.tech-card {
+    background-color: #5d7488; /* Even lighter blue-gray for cards */
+    border: 2px solid #7f90a0;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transition: transform 0.2s ease-out;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+}
+
+.tech-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain; /* Keep aspect ratio */
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle background for image area */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tech-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #f1c40f; /* Gold for names */
+    margin-bottom: 15px;
+}
+
+.drop-target {
+    width: 95%;
+    min-height: 80px; /* Space for the dropped use card */
+    background-color: rgba(129, 236, 236, 0.1); /* Transparent light aqua */
+    border: 2px dashed #81ecec; /* Light aqua dashed border */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1em;
+    padding: 15px;
+    box-sizing: border-box;
+    margin-top: auto; /* Pushes to bottom within flex column */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.drop-target.drag-over {
+    background-color: rgba(129, 236, 236, 0.3);
+    border-color: #2ecc71; /* Green highlight */
+}
+
+.uses-column {
+    flex: 1; /* Takes less space */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+    background-color: #4a6075;
+    border-radius: 18px;
+    border: 1px solid #5a7082;
+}
+
+.draggable-use {
+    background-color: #3498db; /* Blue */
+    color: white;
+    padding: 18px 25px;
+    border-radius: 12px;
+    cursor: grab;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    text-align: center;
+    line-height: 1.4;
+    flex-shrink: 0; /* Prevent shrinking in flex column */
+}
+
+.draggable-use:hover {
+    background-color: #2980b9; /* Darker Blue */
+    transform: translateY(-4px);
+}
+
+.draggable-use.dragging {
+    opacity: 0.7;
+    transform: scale(1.05);
+}
+
+/* Feedback styles */
+.draggable-use.correct {
+    background-color: #2ecc71; /* Green */
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.6);
+}
+
+.draggable-use.incorrect {
+    background-color: #e74c3c; /* Red */
+    box-shadow: 0 0 15px rgba(231, 76, 60, 0.6);
+}
+
+button {
+    background-color: #1abc9c; /* Turquoise */
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 12px;
+    font-size: 1.25em;
+    cursor: pointer;
+    margin: 0 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(26, 188, 156, 0.3);
+}
+
+button:hover {
+    background-color: #16a085; /* Darker Turquoise */
+    transform: translateY(-3px);
+}
+
+#reset-button {
+    background-color: #95a5a6; /* Silver */
+    box-shadow: 0 8px 20px rgba(149, 165, 166, 0.3);
+}
+
+#reset-button:hover {
+    background-color: #7f8c8d; /* Darker Silver */
+}
+
+.feedback-message {
+    margin-top: 40px;
+    font-weight: bold;
+    font-size: 1.6em;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-message.correct {
+    color: #2ecc71;
+}
+
+.feedback-message.incorrect {
+    color: #e74c3c;
+}
+
+/* แหล่งที่มา: */
+/* 1. https://intfiction.org/t/help-button-for-randomly-assigning-gifts-not-working/65760 */
+/* 2. https://github.com/AxelCotonGutierrez/Juego-dia-anterior-dia-posterior */

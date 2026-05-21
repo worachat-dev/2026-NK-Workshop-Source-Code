@@ -1,0 +1,290 @@
+body {
+    font-family: 'Electrolize', sans-serif; /* A techy-looking font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1f2f3d, #2a3a49, #17202c); /* Dark, metallic blue-gray */
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #e0e0e0; /* Off-white text */
+}
+
+.game-container {
+    background-color: #2c3a4d; /* Slightly lighter dark blue-gray */
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    text-align: center;
+    max-width: 1000px;
+    width: 100%;
+    border: 1px solid #4a637f;
+}
+
+h1 {
+    color: #4CAF50; /* Green highlight */
+    margin-bottom: 15px;
+    font-size: 2.8em;
+    font-weight: 800;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+p {
+    color: #b0b0b0; /* Lighter gray */
+    margin-bottom: 25px;
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+.main-circuit-area {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.component-palette {
+    flex: 0 0 180px; /* Fixed width */
+    background-color: #34475c;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid #4c627a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.component-palette h3 {
+    color: #ADD8E6; /* Light Blue */
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+}
+
+#palette-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.component {
+    width: 100%;
+    height: 60px;
+    background-color: #555;
+    border: 2px solid #888;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: white;
+    cursor: grab;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    box-sizing: border-box; /* Include padding/border in element's total width/height */
+    user-select: none;
+    position: relative; /* For connector points */
+}
+
+.component:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.component.dragging {
+    opacity: 0.7;
+    transform: scale(1.05);
+}
+
+/* Component specific styles */
+.battery {
+    background: linear-gradient(to right, #4CAF50, #2E8B57); /* Green battery */
+    border-color: #388E3C;
+}
+.battery::before, .battery::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 20px;
+    background-color: #ccc;
+    border: 1px solid #888;
+}
+.battery::before { left: -10px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
+.battery::after { right: -10px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
+.battery[data-polarity="positive"]::after { /* Positive terminal stub */
+    width: 15px;
+    height: 5px;
+    right: -15px;
+    top: calc(50% - 2.5px);
+    background-color: #ccc;
+    border: 1px solid #888;
+    border-radius: 2px;
+}
+
+
+.wire {
+    background-color: #9E9E9E; /* Gray wire */
+    border-color: #616161;
+}
+
+.lightbulb {
+    background-color: #FFEB3B; /* Yellow bulb */
+    border-color: #FBC02D;
+    color: #333;
+    font-size: 0.9em;
+    box-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+    border-radius: 50%; /* Make it round */
+    width: 60px; /* Equal width and height for circle */
+    height: 60px;
+}
+.lightbulb.on {
+    background-color: #FFFF8D; /* Brighter yellow */
+    box-shadow: 0 0 25px 10px rgba(255, 255, 141, 0.8), 0 0 40px 15px rgba(255, 255, 141, 0.5);
+    border-color: #FFD700;
+}
+
+
+.switch {
+    background-color: #795548; /* Brown switch body */
+    border-color: #5D4037;
+    height: 40px; /* Shorter than others */
+    width: 80%; /* Wider to show lever */
+}
+.switch::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg); /* Start at 0 for open */
+    width: 30px;
+    height: 6px;
+    background-color: #ccc;
+    border-radius: 3px;
+    transition: transform 0.2s ease;
+}
+.switch.open::before {
+    transform: translateY(-50%) rotate(-30deg); /* Leaning left */
+    left: 10px;
+}
+.switch.closed::before {
+    transform: translateY(-50%) rotate(30deg); /* Leaning right */
+    right: 10px;
+}
+
+
+.hint {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #b0b0b0;
+    margin-top: 20px;
+}
+
+
+.circuit-board {
+    flex: 1;
+    min-height: 400px;
+    background-color: #24303b; /* Dark board */
+    border-radius: 12px;
+    border: 2px dashed #4a637f; /* Dashed border for drop zone */
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-wrap: wrap; /* Allow components to arrange */
+    align-content: flex-start; /* Place items at the top */
+    padding: 15px;
+    gap: 10px; /* Space between dropped components */
+    position: relative; /* For dropped components to be absolute */
+    overflow: hidden; /* Prevent components from spilling out */
+}
+
+.circuit-board.drag-over {
+    background-color: #2e3e4a;
+    border-color: #ADD8E6; /* Highlight on drag over */
+}
+
+.circuit-board .placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.5em;
+    font-weight: bold;
+    pointer-events: none; /* Don't block dragging */
+}
+
+.dropped-component {
+    position: absolute; /* Allows precise positioning */
+    border: 2px solid #666;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    cursor: move; /* Indicate it can be moved */
+}
+.dropped-component.battery { background: linear-gradient(to right, #4CAF50, #2E8B57); border-color: #388E3C; }
+.dropped-component.wire { background-color: #9E9E9E; border-color: #616161; }
+.dropped-component.lightbulb { background-color: #FFEB3B; border-color: #FBC02D; color: #333; border-radius: 50%; }
+.dropped-component.switch { background-color: #795548; border-color: #5D4037; }
+
+
+.controls {
+    margin-top: 30px;
+}
+
+button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin: 0 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.3);
+}
+
+button:hover {
+    background-color: #388E3C; /* Darker Green */
+    transform: translateY(-3px);
+}
+
+#reset-button {
+    background-color: #E53935; /* Red */
+    box-shadow: 0 6px 15px rgba(229, 57, 53, 0.3);
+}
+#reset-button:hover {
+    background-color: #C62828; /* Darker Red */
+}
+
+#simulate-button {
+    background-color: #2196F3; /* Blue for simulate */
+    box-shadow: 0 6px 15px rgba(33, 150, 243, 0.3);
+}
+#simulate-button:hover {
+    background-color: #1976D2; /* Darker Blue */
+}
+
+.feedback-message {
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 1.4em;
+    min-height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #e0e0e0;
+}
+
+.feedback-message.success {
+    color: #8BC34A; /* Light Green */
+}
+.feedback-message.error {
+    color: #FF7043; /* Light Red/Orange */
+}
+
+/* แหล่งที่มา: */
+/* 1. https://github.com/TristonBabers/Portfolio-Website */

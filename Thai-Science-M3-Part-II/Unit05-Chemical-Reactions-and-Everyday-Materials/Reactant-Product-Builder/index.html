@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reactant-Product Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Reactant-Product Builder</h1>
+        <p>Drag and drop the atoms/molecules to correctly form the reactants and products for the given chemical reaction. Observe the law of conservation of mass!</p>
+
+        <div class="equation-display">
+            <span id="current-equation"></span>
+        </div>
+
+        <div class="main-builder-area">
+            <div class="elements-palette">
+                <h3>Available Atoms/Molecules</h3>
+                <div id="draggable-elements">
+                    </div>
+            </div>
+
+            <div class="reaction-area">
+                <div class="reactants-zone drop-zone" data-type="reactants">
+                    <h2>Reactants</h2>
+                    <p>Drag molecules here to form reactants</p>
+                </div>
+                <div class="reaction-arrow">→</div>
+                <div class="products-zone drop-zone" data-type="products">
+                    <h2>Products</h2>
+                    <p>Drag molecules here to form products</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="check-button">Check Equation</button>
+            <button id="next-button">Next Reaction</button>
+            <button id="reset-button">Reset</button>
+        </div>
+
+        <div id="feedback" class="feedback-message"></div>
+        <div id="mass-conservation-feedback" class="mass-feedback"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- แหล่งที่มา: -->
+<!-- 1. https://github.com/Adr246/miniproject-main -->
+<!-- 2. https://github.com/Hakesh/p2-gaming-quiz -->
+<!-- 3. https://github.com/cKirkktoh/Caspe_Kirk_MusicMixer -->

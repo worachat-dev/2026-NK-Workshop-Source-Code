@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <title>M.3 Thai Science Learning Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="main_style.css">
+
+    <style>
+        /* Basic Reset & Body Styling - Move to main_style.css */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: #f4f7f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(135deg, #5691c8, #405de6);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8em;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        header h1 .fa-flask {
+            margin-right: 10px;
+            animation: pulse-flask 2s infinite;
+        }
+
+        @keyframes pulse-flask {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        header p {
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        #content-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em;
+            color: #405de6;
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #content-section h2 .fa-book-open {
+            margin-right: 12px;
+        }
+
+        /* Module (Part) Card Styling */
+        .module-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            overflow: hidden; /* Ensures child elements respect border radius */
+        }
+
+        .module-header {
+            background-color: #6078ea; /* A slightly different shade for part headers */
+            color: white;
+            padding: 20px 25px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .module-header h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6em;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .module-header .fa-puzzle-piece {
+            margin-right: 10px;
+        }
+
+        .units-container {
+            padding: 15px 25px 25px; /* Added more bottom padding */
+        }
+
+        /* Unit Section Styling */
+        .unit-section {
+            margin-bottom: 30px;
+        }
+
+        .unit-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .unit-section h4 {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e6ef;
+            font-weight: 600;
+        }
+
+        /* Games Grid Styling */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid */
+            gap: 20px;
+        }
+
+        /* Game Card Styling */
+        .game-card {
+            background-color: #f8f9fa;
+            border: 1px solid #e3e9f0;
+            border-radius: 8px;
+            padding: 18px;
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(64, 93, 230, 0.15);
+            background-color: #e9ecef; /* Slight background change on hover */
+            border-color: #405de6;
+        }
+
+        .game-card .game-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+            color: #405de6; /* Icon color */
+            width: 30px; /* Fixed width for alignment */
+            text-align: center;
+        }
+
+        .game-card .game-title {
+            font-size: 1.05em;
+            font-weight: 500;
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #343a40;
+            color: #f8f9fa;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+            header p {
+                font-size: 1em;
+            }
+            #content-section h2 {
+                font-size: 1.8em;
+            }
+            .module-header h3 {
+                font-size: 1.4em;
+            }
+            .unit-section h4 {
+                font-size: 1.2em;
+            }
+            .games-grid {
+                grid-template-columns: 1fr; /* Single column on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1><i class="fas fa-flask"></i> M.3 Thai Science Learning Games</h1>
+            <p>Explore interactive units and engaging games to enhance your understanding of science concepts.</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="content-section">
+            <h2><i class="fas fa-book-open"></i> Select a Unit or Game to Begin</h2>
+            <div class="modules-grid"> <article class="module-card">
+                    <header class="module-header">
+                        <h3><i class="fas fa-puzzle-piece"></i> Thai-Science-M3-Part-I</h3>
+                    </header>
+                    <div class="units-container">
+                        <section class="unit-section">
+                            <h4>Unit 01: Science and Problem Solving</h4>
+                            <div class="games-grid">
+                                <a href="Thai-Science-M3-Part-I/Unit01-Science-and-Problem-Solving/Science-in-Everyday-Life-Problem-Solver/index.html" class="game-card">
+                                    <i class="fas fa-lightbulb game-icon"></i>
+                                    <span class="game-title">Science in Everyday Life Problem Solver</span>
+                                </a>
+                            </div>
+                        </section>
+
+                        <section class="unit-section">
+                            <h4>Unit 02: Genetics</h4>
+                            <div class="games-grid">
+                                <a href="Thai-Science-M3-Part-I/Unit02-Genetics/DNA-Builder/index.html" class="game-card">
+                                    <i class="fas fa-dna game-icon"></i> <span class="game-title">DNA Builder</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-I/Unit02-Genetics/Genetic-Disease-Detective/index.html" class="game-card">
+                                    <i class="fas fa-user-md game-icon"></i> <span class="game-title">Genetic Disease Detective</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-I/Unit02-Genetics/GMO-Pros-and-Cons-Sorting-Activity/index.html" class="game-card">
+                                    <i class="fas fa-seedling game-icon"></i> <span class="game-title">GMO Pros and Cons Sorting Activity</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-I/Unit02-Genetics/Mendelian-Genetics-Punnett-Square-SimulatorGame/index.html" class="game-card">
+                                    <i class="fas fa-chart-pie game-icon"></i> <span class="game-title">Mendelian Genetics Punnett Square Simulator</span>
+                                </a>
+                            </div>
+                        </section>
+
+                        <section class="unit-section">
+                            <h4>Unit 03: Waves and Light</h4>
+                            <div class="games-grid">
+                                <a href="Thai-Science-M3-Part-I/Unit03-Waves-and-Light/Electromagnetic-Spectrum-Explorer/index.html" class="game-card">
+                                    <i class="fas fa-broadcast-tower game-icon"></i> <span class="game-title">Electromagnetic Spectrum Explorer</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-I/Unit03-Waves-and-Light/Image-Formation-Match/index.html" class="game-card">
+                                    <i class="fas fa-image game-icon"></i> <span class="game-title">Image Formation Match</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-I/Unit03-Waves-and-Light/Light-Phenomena-Quiz/index.html" class="game-card">
+                                    <i class="fas fa-question-circle game-icon"></i> <span class="game-title">Light Phenomena Quiz</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-I/Unit03-Waves-and-Light/Light-Ray-Tracer/index.html" class="game-card">
+                                    <i class="fas fa-sun game-icon"></i> <span class="game-title">Light Ray Tracer</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-I/Unit03-Waves-and-Light/Wave-Anatomy-Builder/index.html" class="game-card">
+                                    <i class="fas fa-water game-icon"></i> <span class="game-title">Wave Anatomy Builder</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-I/Unit03-Waves-and-Light/Wave-Property-Quiz/index.html" class="game-card">
+                                    <i class="fas fa-poll-h game-icon"></i> <span class="game-title">Wave Property Quiz</span>
+                                </a>
+                            </div>
+                        </section>
+
+                        <section class="unit-section">
+                            <h4>Unit 04: Our Solar System</h4>
+                            <div class="games-grid">
+                                <a href="Thai-Science-M3-Part-I/Unit04-Our-Solar-System/Moon-Phase-Match/index.html" class="game-card">
+                                    <i class="fas fa-moon game-icon"></i> <span class="game-title">Moon Phase Match</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-I/Unit04-Our-Solar-System/Solar-System-Orbit-Simulator/index.html" class="game-card">
+                                    <i class="fas fa-globe-americas game-icon"></i> <span class="game-title">Solar System Orbit Simulator</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-I/Unit04-Our-Solar-System/Space-Technology-Explorer/index.html" class="game-card">
+                                    <i class="fas fa-rocket game-icon"></i> <span class="game-title">Space Technology Explorer</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-I/Unit04-Our-Solar-System/Tide-Predictor/index.html" class="game-card">
+                                    <i class="fas fa-tint game-icon"></i> <span class="game-title">Tide Predictor</span> </a>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+
+                <article class="module-card">
+                    <header class="module-header">
+                        <h3><i class="fas fa-puzzle-piece"></i> Thai-Science-M3-Part-II</h3>
+                    </header>
+                    <div class="units-container">
+                        <section class="unit-section">
+                            <h4>Unit 05: Chemical Reactions and Everyday Materials</h4>
+                            <div class="games-grid">
+                                <a href="Thai-Science-M3-Part-II/Unit05-Chemical-Reactions-and-Everyday-Materials/Balancing-Chemical-Equations-Challenge/index.html" class="game-card">
+                                    <i class="fas fa-balance-scale game-icon"></i> <span class="game-title">Balancing Chemical Equations Challenge</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-II/Unit05-Chemical-Reactions-and-Everyday-Materials/Chemical-Reaction-Sorter/index.html" class="game-card">
+                                    <i class="fas fa-sort-alpha-down game-icon"></i> <span class="game-title">Chemical Reaction Sorter</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-II/Unit05-Chemical-Reactions-and-Everyday-Materials/Everyday-Object-Material-Identification/index.html" class="game-card">
+                                    <i class="fas fa-box-open game-icon"></i> <span class="game-title">Everyday Object Material Identification</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-II/Unit05-Chemical-Reactions-and-Everyday-Materials/Material-Property-Match/index.html" class="game-card">
+                                    <i class="fas fa-puzzle-piece game-icon"></i> <span class="game-title">Material Property Match</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-II/Unit05-Chemical-Reactions-and-Everyday-Materials/Reactant-Product-Builder/index.html" class="game-card">
+                                    <i class="fas fa-atom game-icon"></i> <span class="game-title">Reactant Product Builder</span>
+                                </a>
+                            </div>
+                        </section>
+
+                        <section class="unit-section">
+                            <h4>Unit 06: Electricity</h4>
+                            <div class="games-grid">
+                                <a href="Thai-Science-M3-Part-II/Unit06-Electricity/Circuit-Builder/index.html" class="game-card">
+                                    <i class="fas fa-charging-station game-icon"></i> <span class="game-title">Circuit Builder</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-II/Unit06-Electricity/Electrical-Safety-Scenario/index.html" class="game-card">
+                                    <i class="fas fa-bolt game-icon"></i> <span class="game-title">Electrical Safety Scenario</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-II/Unit06-Electricity/Home-Energy-Audit-Game/index.html" class="game-card">
+                                    <i class="fas fa-home game-icon"></i> <span class="game-title">Home Energy Audit Game</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-II/Unit06-Electricity/Ohms-Law-Calculator-Game/index.html" class="game-card">
+                                    <i class="fas fa-calculator game-icon"></i> <span class="game-title">Ohm's Law Calculator Game</span>
+                                </a>
+                            </div>
+                        </section>
+
+                        <section class="unit-section">
+                            <h4>Unit 07: Ecosystems and Biodiversity</h4>
+                            <div class="games-grid">
+                                <a href="Thai-Science-M3-Part-II/Unit07-Ecosystems-and-Biodiversity/Biodiversity-Importance-Scenario/index.html" class="game-card">
+                                    <i class="fas fa-tree game-icon"></i> <span class="game-title">Biodiversity Importance Scenario</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-II/Unit07-Ecosystems-and-Biodiversity/Biodiversity-Level-Match/index.html" class="game-card">
+                                    <i class="fas fa-layer-group game-icon"></i> <span class="game-title">Biodiversity Level Match</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-II/Unit07-Ecosystems-and-Biodiversity/Ecosystem-Component-Sorter/index.html" class="game-card">
+                                    <i class="fas fa-leaf game-icon"></i> <span class="game-title">Ecosystem Component Sorter</span>
+                                </a>
+                                <a href="Thai-Science-M3-Part-II/Unit07-Ecosystems-and-Biodiversity/Food-Web-Builder/index.html" class="game-card">
+                                    <i class="fas fa-spider game-icon"></i> <span class="game-title">Food Web Builder</span>
+                                </a>
+                            </div>
+                        </section>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Worachat Wannawong. All rights reserved.</p>
+    </footer>
+</body>
+</html>

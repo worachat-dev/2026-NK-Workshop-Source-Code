@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Energy Audit Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Home Energy Audit Challenge</h1>
+        <p>Imagine you're auditing your home's electricity usage. Enter how many hours per day each appliance is used. Then, calculate the total energy consumed and the estimated monthly cost!</p>
+
+        <div class="audit-area">
+            <div class="appliances-list">
+                <h2>Appliances & Usage (Hours/Day)</h2>
+                <div id="appliance-inputs">
+                    </div>
+            </div>
+
+            <div class="calculation-parameters">
+                <h2>Audit Settings</h2>
+                <div class="parameter-group">
+                    <label for="electricity-rate">Electricity Rate (per kWh):</label>
+                    <input type="number" id="electricity-rate" value="4.00" step="0.01">
+                    <span>THB</span> </div>
+                <div class="parameter-group">
+                    <label for="days-in-month">Days in Month:</label>
+                    <input type="number" id="days-in-month" value="30" step="1">
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="calculate-button">Calculate Energy & Cost</button>
+            <button id="reset-button">Reset Audit</button>
+        </div>
+
+        <div class="results-area">
+            <h2>Your Audit Results</h2>
+            <p>Total Daily Energy: <span id="daily-energy-kwh">0.00</span> kWh</p>
+            <p>Total Monthly Energy: <span id="monthly-energy-kwh">0.00</span> kWh</p>
+            <p>Estimated Monthly Cost: <span id="monthly-cost">0.00</span> THB</p>
+        </div>
+
+        <div id="feedback" class="feedback-message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- แหล่งที่มา: -->
+<!-- 1. https://github.com/CalebATM/CalebRep -->
+<!-- 2. https://github.com/Gyani1610/Loan-Calculator -->

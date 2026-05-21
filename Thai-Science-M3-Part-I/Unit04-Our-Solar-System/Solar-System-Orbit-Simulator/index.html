@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System & Seasons Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="simulator-container">
+        <h1>Our Solar System & Seasons Simulator</h1>
+
+        <div class="simulator-section" id="orbit-simulator-section">
+            <h2>1. Planetary Orbit (Simplified)</h2>
+            <p>Observe how a planet orbits the Sun in an elliptical path.</p>
+            <div class="orbit-display">
+                <div class="sun"></div>
+                <div class="orbit-path">
+                    <div class="planet" id="orbiting-planet"></div>
+                </div>
+            </div>
+            <button id="toggle-orbit-animation">Pause/Play Orbit</button>
+            <p class="explanation">Planets orbit the Sun due to gravity. Their paths are elliptical, not perfect circles.</p>
+        </div>
+
+        <div class="simulator-section" id="seasons-simulator-section">
+            <h2>2. Earth's Tilt and Seasons</h2>
+            <p>Click or drag the Earth around its orbit to observe how the tilted axis affects seasons.</p>
+            <div class="seasons-display">
+                <img src="sun_seasons.png" alt="Sun" class="sun-seasons">
+                <div class="earth-orbit-path-seasons" id="seasons-orbit-path">
+                    </div>
+            </div>
+            <div class="seasons-controls">
+                <button data-position="winter">Dec (Winter in N. H.)</button>
+                <button data-position="spring">Mar (Spring in N. H.)</button>
+                <button data-position="summer">June (Summer in N. H.)</button>
+                <button data-position="autumn">Sep (Autumn in N. H.)</button>
+            </div>
+            <div class="seasons-info">
+                <p><strong>Current Season (Northern Hemisphere):</strong> <span id="current-season">Click on Earth's position</span></p>
+                <p class="explanation">Earth's axis is tilted. As it orbits the Sun, different hemispheres receive more direct sunlight at different times of the year, causing seasons.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- แหล่งที่มา: -->
+<!-- 1. https://github.com/Aadarshs12/Solar-System -->
+<!-- 2. https://github.com/AbrahamEstrada27/examen372 -->
+<!-- 3. https://github.com/AlgoHussle/nomad-blog -->
+<!-- 4. https://github.com/Geicomo/Geicomo.com -->
